@@ -1,0 +1,23 @@
+trigger:
+  branches:
+    include:
+      - main # Or the branch you want to trigger the pipeline
+
+pool:
+  vmImage: "ubuntu-latest"
+
+steps:
+  - script: |
+      echo "Logging into Docker Hub..."
+      docker login -u $DOCKERHUB_USERNAME -p $DOCKERHUB_PASSWORD
+    displayName: "Login to Docker Hub"
+
+  - script: |
+      echo "Building Docker image..."
+      docker build -t your-dockerhub-username/your-image-name:latest .
+    displayName: "Build Docker image"
+
+  - script: |
+      echo "Pushing Docker image to Docker Hub..."
+      docker push your-dockerhub-username/your-image-name:latest
+    displayName: "Push Docker image"
