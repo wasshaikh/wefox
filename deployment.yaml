@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: prodapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: prodapp
+  template:
+    metadata:
+      labels:
+        app: prodapp
+    spec:
+      containers:
+        - name: prodapp
+          image: wasshaik/wefox/stefanprodan/podapp:6.5.1
+          ports:
+            - containerPort: 8081
