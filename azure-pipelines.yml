@@ -14,10 +14,10 @@ steps:
 
   - script: |
       echo "Building Docker image..."
-      docker build -t your-dockerhub-username/your-image-name:latest .
+      docker build -t stefanprodan/podinfo:v6.5.1 .
     displayName: "Build Docker image"
 
   - script: |
       echo "Pushing Docker image to Docker Hub..."
-      docker push your-dockerhub-username/your-image-name:latest
+      docker push wasshaik/wefox-challenge:stefanprodan/podinfo:v6.5.1
     displayName: "Push Docker image"
